@@ -29,6 +29,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
+app.get("/health", (_request: any, response: any) => {
+    response.status(200).send("healthy");
+});
+
 app.use("/api/auth", userRoutes);
 app.use("/api/license", licenseRoutes);
 app.use("/api/patient", patientRoutes);

@@ -17,5 +17,3 @@ sketch
 dist/
 .env
 package-lock.json
-
-src/constants/envFile.ts
