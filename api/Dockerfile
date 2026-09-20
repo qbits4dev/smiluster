@@ -13,9 +13,6 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build TypeScript code (if needed)
-# RUN npm run build
-
 # Production stage
 FROM node:18-alpine
 
@@ -43,8 +40,12 @@ USER nodejs
 # Expose port
 EXPOSE 3000
 
+# Container health check
+HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
+    CMD wget --quiet --tries=1 --spider http://localhost:3000/health || exit 1
+
 # Use dumb-init to handle signals properly
 ENTRYPOINT ["dumb-init", "--"]
 
 # Start the application with ts-node
-CMD ["npx", "ts-node", "app.ts"]
+CMD ["npm", "start"]
