@@ -161,9 +161,9 @@ export default function Settings() {
         };
 
         const toggleIsActive = (index: any) => {
+            const currentDay = days.find((day) => day.value === index);
             handleUpdateDays(index, {
-                isActive:
-                    !days.find((day) => day.value === index)?.isActive ?? false,
+                isActive: !(currentDay?.isActive ?? false),
             });
         };
 

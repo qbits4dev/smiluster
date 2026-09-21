@@ -20,11 +20,11 @@ import ProfilePicture from "../ProfilePicture";
 import DeleteCard from "../DeleteCard";
 import { ROUTER } from "../../constants/env";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as ListViewSVG } from "../../icons/list-view.svg";
-import { ReactComponent as GridViewSVG } from "../../icons/grid-view.svg";
+import ListViewSVG from "../../icons/list-view.svg?react";
+import GridViewSVG from "../../icons/grid-view.svg?react";
 
 export default function AppointmentsList(props: any) {
-    const {} = props;
+    const { } = props;
     const {
         appointments,
         handleChangeAppointmentsFilters,
@@ -192,7 +192,7 @@ export default function AppointmentsList(props: any) {
                 },
             ],
             style: {},
-            onClickRow: () => {},
+            onClickRow: () => { },
         },
         data: [
             ...appointments.data.map((row: any) => {
@@ -493,12 +493,12 @@ export default function AppointmentsList(props: any) {
                                     {getCalenderWeekSwitcher(
                                         new Date(
                                             new Date().getTime() +
-                                                weekStep *
-                                                    24 *
-                                                    60 *
-                                                    60 *
-                                                    1000 *
-                                                    7
+                                            weekStep *
+                                            24 *
+                                            60 *
+                                            60 *
+                                            1000 *
+                                            7
                                         )
                                     )}
                                 </label>
@@ -546,9 +546,8 @@ export default function AppointmentsList(props: any) {
                             <button
                                 className='center'
                                 style={{
-                                    backgroundColor: `${
-                                        view === "grid" ? "var(--color-2)" : ""
-                                    }`,
+                                    backgroundColor: `${view === "grid" ? "var(--color-2)" : ""
+                                        }`,
                                     padding: "var(--pd-0)",
 
                                     borderRight: "1px solid white",
@@ -560,9 +559,8 @@ export default function AppointmentsList(props: any) {
                             <button
                                 className='center'
                                 style={{
-                                    backgroundColor: `${
-                                        view === "list" ? "var(--color-2)" : ""
-                                    }`,
+                                    backgroundColor: `${view === "list" ? "var(--color-2)" : ""
+                                        }`,
                                     padding: "var(--pd-0)",
                                 }}
                                 onClick={toggleView}
@@ -698,9 +696,8 @@ export default function AppointmentsList(props: any) {
                             <button
                                 className='center'
                                 style={{
-                                    backgroundColor: `${
-                                        view === "grid" ? "var(--color-2)" : ""
-                                    }`,
+                                    backgroundColor: `${view === "grid" ? "var(--color-2)" : ""
+                                        }`,
                                     padding: "var(--pd-0)",
 
                                     borderRight: "1px solid white",
@@ -712,9 +709,8 @@ export default function AppointmentsList(props: any) {
                             <button
                                 className='center'
                                 style={{
-                                    backgroundColor: `${
-                                        view === "list" ? "var(--color-2)" : ""
-                                    }`,
+                                    backgroundColor: `${view === "list" ? "var(--color-2)" : ""
+                                        }`,
                                     padding: "var(--pd-0)",
                                 }}
                                 onClick={toggleView}

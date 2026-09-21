@@ -1,9 +1,9 @@
 import * as React from "react";
-import { ReactComponent as MinusSVG } from "./minus.svg";
-import { ReactComponent as DisableSVG } from "./unavailable.svg";
-import { ReactComponent as PenSVG } from "./pencil.svg";
-import { ReactComponent as ValidSVG } from "./valid.svg";
-import { ReactComponent as CancelSVG } from "./cancel.svg";
+import MinusSVG from "./minus.svg?react";
+import DisableSVG from "./unavailable.svg?react";
+import PenSVG from "./pencil.svg?react";
+import ValidSVG from "./valid.svg?react";
+import CancelSVG from "./cancel.svg?react";
 import "./style.css";
 import { useInvoicing } from "../../hooks/useInvoicing";
 import SVGIcon from "../SVGIcon";
@@ -55,7 +55,7 @@ export default function InvoiceAppointmentToothAct(
                             borderRadius: "5px",
                         }}
                         onChange={onChangeEditToothActCost}
-                        // onBlur={cancelEditToothActCost}
+                    // onBlur={cancelEditToothActCost}
                     />
                     <div style={{ display: "flex" }}>
                         <div style={{ width: "20px", height: "24px" }}>

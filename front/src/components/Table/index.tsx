@@ -3,9 +3,9 @@ import React from "react";
 import "./style.css";
 import SVGIcon from "../SVGIcon";
 // import Button from "../Button";
-// import { ReactComponent as DocumentSVG } from "../../icons/document.svg";
-import { ReactComponent as LeftArrowSVG } from "../../icons/left-arrow.svg";
-import { ReactComponent as DoubleArrowSVG } from "../../icons/double-arrow-right.svg";
+// import DocumentSVG from "../../icons/document.svg?react";
+import LeftArrowSVG from "../../icons/left-arrow.svg?react";
+import DoubleArrowSVG from "../../icons/double-arrow-right.svg?react";
 import Select from "react-select";
 import DropDown from "../dropdown";
 import { usePagination } from "../../hooks/usePagination";
@@ -168,9 +168,8 @@ export default function Table(props: TableProps) {
                 buttons.push(
                     <div
                         key={i}
-                        className={`page-number-btn ${
-                            currentPageNumber === i ? "selected" : ""
-                        }`}
+                        className={`page-number-btn ${currentPageNumber === i ? "selected" : ""
+                            }`}
                         onClick={() => setCurrentPageNumber(i)}
                     >
                         {i}
@@ -388,17 +387,15 @@ export default function Table(props: TableProps) {
                             <div
                                 className="center"
                                 style={{
-                                    height: `${
-                                        noDataSize ? noDataSize : 400
-                                    }px`,
+                                    height: `${noDataSize ? noDataSize : 400
+                                        }px`,
                                     width: "100%",
                                     top: "0",
                                     left: "0",
                                     color: "var(--color-1)",
                                     fontWeight: "bold",
-                                    fontSize: `${
-                                        noDataSize ? noDataSize / 4 : 32
-                                    }px`,
+                                    fontSize: `${noDataSize ? noDataSize / 4 : 32
+                                        }px`,
                                     backgroundColor: "white",
                                 }}
                             >
@@ -549,7 +546,7 @@ export default function Table(props: TableProps) {
     );
 }
 
-interface ExtraRowData {}
+interface ExtraRowData { }
 interface TableRow {
     dataRow: {
         value: string | React.ReactNode;
@@ -606,7 +603,7 @@ Table.defaultProps = {
                 { value: "colum 5 " },
             ],
             style: {},
-            onClickRow: () => {},
+            onClickRow: () => { },
         },
         data: [
             {
@@ -618,7 +615,7 @@ Table.defaultProps = {
                     { value: "one" },
                 ],
                 style: {},
-                onClickRow: () => {},
+                onClickRow: () => { },
             },
             {
                 dataRow: [
@@ -629,7 +626,7 @@ Table.defaultProps = {
                     { value: "one" },
                 ],
                 style: {},
-                onClickRow: () => {},
+                onClickRow: () => { },
             },
             {
                 dataRow: [
@@ -640,7 +637,7 @@ Table.defaultProps = {
                     { value: "one" },
                 ],
                 style: {},
-                onClickRow: () => {},
+                onClickRow: () => { },
             },
             {
                 dataRow: [
@@ -651,7 +648,7 @@ Table.defaultProps = {
                     { value: "one" },
                 ],
                 style: {},
-                onClickRow: () => {},
+                onClickRow: () => { },
             },
         ],
     },

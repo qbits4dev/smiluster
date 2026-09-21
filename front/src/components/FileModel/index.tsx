@@ -1,9 +1,9 @@
 import * as React from "react";
 import "./style.css";
-import { ReactComponent as PrescriptionSVG } from "../../icons/prescription.svg";
-import { ReactComponent as DocumentSVG } from "../../icons/document.svg";
-import { ReactComponent as UploadSVG } from "../../icons/upload.svg";
-import { ReactComponent as WriteSVG } from "../../icons/write.svg";
+import PrescriptionSVG from "../../icons/prescription.svg?react";
+import DocumentSVG from "../../icons/document.svg?react";
+import UploadSVG from "../../icons/upload.svg?react";
+import WriteSVG from "../../icons/write.svg?react";
 import SVGIcon from "../../components/SVGIcon";
 import DeleteCard from "../../components/DeleteCard";
 import { useDocuments } from "../../hooks/useDocuments";
@@ -19,7 +19,7 @@ export default function FileModel({
     // handleDeleteFile,
     handleDownloadFile,
 }: // handleViewFile,
-FileModelProps) {
+    FileModelProps) {
     const renderIcon = () => {
         switch (type) {
             case "prescription":

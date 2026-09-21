@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Docker](https://img.shields.io/badge/docker-ready-brightgreen.svg)](https://www.docker.com/)
-[![Node.js](https://img.shields.io/badge/node.js-18.x-green.svg)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/node.js-26.x-green.svg)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/react-18.2-blue.svg)](https://reactjs.org/)
 
 A comprehensive dental practice management system designed to streamline clinic operations, patient management, appointments, billing, and more.
@@ -68,7 +68,7 @@ Smiluster
 
 #### Backend
 
-- **Runtime:** Node.js 18
+- **Runtime:** Node.js 26
 - **Framework:** Express.js
 - **Language:** TypeScript
 - **Database:** MariaDB 11.2
@@ -119,8 +119,8 @@ Smiluster
 
 4. **Access the application**
 
-   - Frontend: http://localhost
-   - Backend API: http://localhost:3000
+   - Frontend: <http://localhost>
+   - Backend API: <http://localhost:3000>
    - Database: localhost:3306
 
 5. **Login with default credentials**
@@ -138,7 +138,7 @@ After starting the containers:
 
 1. Wait for all services to be healthy (check with `docker-compose ps`)
 2. The database will be automatically initialized with a default admin user
-3. Access the frontend at http://localhost
+3. Access the frontend at <http://localhost>
 4. Login with the default credentials:
    - **Email:** `admin@smiluster.com`
    - **Password:** `smiluster`

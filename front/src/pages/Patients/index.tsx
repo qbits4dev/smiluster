@@ -8,8 +8,8 @@ import SVGIcon from "../../components/SVGIcon";
 import PatientCardForm from "../../components/PatientCardForm";
 import DeleteCard from "../../components/DeleteCard";
 import { usePatients } from "../../hooks/usePatients";
-import { ReactComponent as EditSVG } from "../../icons/edit.svg";
-import { ReactComponent as DeleteSVG } from "../../icons/trash.svg";
+import EditSVG from "../../icons/edit.svg?react";
+import DeleteSVG from "../../icons/trash.svg?react";
 import { useNavigate } from "react-router-dom";
 import { ROUTER } from "../../constants/env";
 import { DateTime } from "luxon";
@@ -35,9 +35,9 @@ export default function Patient() {
     } = usePagination();
     React.useEffect(() => {
         setCurrentPageNumber(1);
-       if (!(itemsPerPage && itemsPerPage > 0)) {
-           setItemsPerPage(10);
-       }
+        if (!(itemsPerPage && itemsPerPage > 0)) {
+            setItemsPerPage(10);
+        }
     }, []);
 
     const handleOnChange = (e: any) => {
@@ -293,7 +293,7 @@ export default function Patient() {
                                     height={25}
                                 />
                                 <input
-                                 
+
                                     type='text'
                                     placeholder='Rechercher'
                                     name='search'

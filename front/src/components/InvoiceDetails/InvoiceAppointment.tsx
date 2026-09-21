@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
-import { ReactComponent as PenSVG } from "./pencil.svg";
-import { ReactComponent as ValidSVG } from "./valid.svg";
-import { ReactComponent as CancelSVG } from "./cancel.svg";
-import { ReactComponent as MinusSVG } from "./minus.svg";
-import { ReactComponent as AutoCalculSVG } from "./math.svg";
+import PenSVG from "./pencil.svg?react";
+import ValidSVG from "./valid.svg?react";
+import CancelSVG from "./cancel.svg?react";
+import MinusSVG from "./minus.svg?react";
+import AutoCalculSVG from "./math.svg?react";
 import SVGIcon from "../SVGIcon";
 
 import "./style.css";
@@ -158,7 +158,7 @@ export default function InvoiceAppointment(props: InvoiceAppointmentProps) {
                                             : "3ch",
                                 }}
                                 onChange={onChangeEditCostAppointment}
-                                // onBlur={handleBlurCostAppointment}
+                            // onBlur={handleBlurCostAppointment}
                             />
                             <div style={{ display: "flex" }}>
                                 <div style={{ width: "20px", height: "24px" }}>
@@ -222,7 +222,7 @@ export default function InvoiceAppointment(props: InvoiceAppointmentProps) {
                                             : "3ch",
                                 }}
                                 onChange={onChangeEditPaymentAppointment}
-                                // onBlur={cancelEditPaymentAppointment}
+                            // onBlur={cancelEditPaymentAppointment}
                             />
                             <div style={{ display: "flex" }}>
                                 <div style={{ width: "20px", height: "24px" }}>

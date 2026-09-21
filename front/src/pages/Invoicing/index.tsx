@@ -5,8 +5,8 @@ import "./style.css";
 // import Button from "../../components/Button";
 import Table from "../../components/Table";
 import SVGIcon from "../../components/SVGIcon";
-import { ReactComponent as CartSVG } from "./cart.svg";
-// import { ReactComponent as CardSVG } from "./card.svg";
+import CartSVG from "./cart.svg?react";
+// import CardSVG from "./card.svg?react";
 // import AddInvoicingCard from "../../components/AddInvoicingCard";
 import { useInvoicing } from "../../hooks/useInvoicing";
 import { usePagination } from "../../hooks/usePagination";
@@ -287,7 +287,7 @@ export default function Invoicing() {
                     { value: "État" },
                 ],
                 style: {},
-                onClickRow: () => {},
+                onClickRow: () => { },
             },
             data: dataRows,
         };
@@ -490,7 +490,7 @@ export default function Invoicing() {
                             options={statusOptions}
                             onChange={handleStatus}
                             isMulti
-                            // menuIsOpen={true}
+                        // menuIsOpen={true}
                         />
                     </div>
                     <div className="date">

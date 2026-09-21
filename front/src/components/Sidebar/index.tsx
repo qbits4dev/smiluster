@@ -2,7 +2,7 @@ import * as React from "react";
 import "./style.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { links } from "../../constants/sidebarLinks";
-import { ReactComponent as LeftArrowSVG } from "../../icons/left-arrows.svg";
+import LeftArrowSVG from "../../icons/left-arrows.svg?react";
 import SVGIcon from "../SVGIcon";
 import logo from "./logo.png";
 import toothLogo from "./tooth-logo.png";
@@ -111,9 +111,8 @@ export default function Sidebar(props: SidebarProps) {
                                 width={32}
                             />
                             <div
-                                className={`element-to-hide ${
-                                    shape ? "" : "hidden"
-                                }`}
+                                className={`element-to-hide ${shape ? "" : "hidden"
+                                    }`}
                             >
                                 {name}
                             </div>
@@ -177,5 +176,5 @@ interface SidebarProps {
 
 Sidebar.defaultProps = {
     shape: 0,
-    toggleShape: () => {},
+    toggleShape: () => { },
 };

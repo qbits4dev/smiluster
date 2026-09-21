@@ -1,5 +1,5 @@
 # Backend Dockerfile for Smiluster API
-FROM node:18-alpine AS builder
+FROM node:26-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Production stage
-FROM node:18-alpine
+FROM node:26-alpine
 
 # Install dumb-init for proper signal handling
 RUN apk add --no-cache dumb-init

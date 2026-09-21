@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { ReactComponent as CloseSVG } from "../../icons/close.svg";
+import CloseSVG from "../../icons/close.svg?react";
 
 export default function PopupCard(props: PopupCardProps) {
     const {

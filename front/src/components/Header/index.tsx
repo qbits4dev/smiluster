@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useLocation } from "react-router-dom";
 import "./style.css";
-import { ReactComponent as NotificationSVG } from "../../icons/notification.svg";
-import { ReactComponent as DropDownSVG } from "../../icons/drop-down-arrow.svg";
+import NotificationSVG from "../../icons/notification.svg?react";
+import DropDownSVG from "../../icons/drop-down-arrow.svg?react";
 
 import DropDown from "../dropdown";
 import SVGIcon from "../SVGIcon";
@@ -191,7 +191,7 @@ export default function Header(props: any) {
                 style={{
                     backgroundColor:
                         isNotifOpen ||
-                        location.pathname === ROUTER.NOTIFICATIONS
+                            location.pathname === ROUTER.NOTIFICATIONS
                             ? "rgba(255, 255, 255, 0.2)"
                             : "",
                 }}
@@ -243,7 +243,7 @@ export default function Header(props: any) {
                         alt={
                             auth.user
                                 ? auth.user?.firstName?.slice(0, 1) +
-                                  auth.user?.lastName?.slice(0, 1)
+                                auth.user?.lastName?.slice(0, 1)
                                 : ""
                         }
                         color="var(--color-1)"
