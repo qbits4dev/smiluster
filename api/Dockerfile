@@ -16,8 +16,8 @@ COPY . .
 # Production stage
 FROM node:26-alpine
 
-# Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init
+# Install dumb-init and curl for health checks
+RUN apk add --no-cache dumb-init curl
 
 # Create app directory
 WORKDIR /app
@@ -42,7 +42,7 @@ EXPOSE 3000
 
 # Container health check
 HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost:3000/health || exit 1
+    CMD curl --fail --silent --show-error --output /dev/null http://localhost:3000/health || exit 1
 
 # Use dumb-init to handle signals properly
 ENTRYPOINT ["dumb-init", "--"]
