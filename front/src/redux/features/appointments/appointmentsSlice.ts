@@ -70,10 +70,10 @@ const initState: any = {
         appServices: [],
     },
     statusOptions: [
-        { value: "scheduled", label: "Planifié", color: "#2C86EF" },
-        { value: "pending", label: "En attente", color: "#F18E19" },
-        { value: "completed", label: "Terminé", color: "#1BD788" },
-        { value: "canceled", label: "Annulé", color: "#E20202" },
+        { value: "scheduled", label: "Scheduled", color: "#2C86EF" },
+        { value: "pending", label: "Pending", color: "#F18E19" },
+        { value: "completed", label: "Completed", color: "#1BD788" },
+        { value: "canceled", label: "Canceled", color: "#E20202" },
     ],
 };
 const initialState: any = { ...initState };

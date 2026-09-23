@@ -17,5 +17,20 @@ INSERT INTO Users (email, password, firstName, lastName, phone, role, licenseID)
 ("admin@smiluster.com", "$2b$10$d0mLPy4UiFSDpxsgjTwgeOuC7lomIpLA8EhJ2DEhU4Aq014hC7Tce", "Admin", "User", 1234567890, "Doctor", @license_id);
 
 -- Create default settings for the license
-INSERT INTO Settings (licenseID, clinicName, address, phone, email, workingHours) VALUES
-(@license_id, "Smiluster Dental Clinic", "123 Main Street", "1234567890", "admin@smiluster.com", "{\"monday\": \"9:00-18:00\", \"tuesday\": \"9:00-18:00\", \"wednesday\": \"9:00-18:00\", \"thursday\": \"9:00-18:00\", \"friday\": \"9:00-18:00\"}");
+INSERT INTO Settings (
+	licenseID,
+	notificationPreferences,
+	worksHours,
+	sessionPeriod,
+	holidays,
+	allowReminderSMS,
+	smsReminderMassage
+) VALUES (
+	@license_id,
+	TRUE,
+	"[{\"day\": 1, \"startTime\": \"09:00\", \"endTime\": \"18:00\"}, {\"day\": 2, \"startTime\": \"09:00\", \"endTime\": \"18:00\"}, {\"day\": 3, \"startTime\": \"09:00\", \"endTime\": \"18:00\"}, {\"day\": 4, \"startTime\": \"09:00\", \"endTime\": \"18:00\"}, {\"day\": 5, \"startTime\": \"09:00\", \"endTime\": \"18:00\"}]",
+	"30",
+	"[]",
+	FALSE,
+	""
+);

@@ -50,17 +50,17 @@ export default function Login() {
                             lineHeight: "1.5",
                         }}
                     >
-                        Gérez votre cabinet dentaire efficacement sur Smiluster.
+                        Manage your dental practice efficiently with Smiluster.
                     </p>
                 </div>
                 <form onSubmit={handleOnSubmit}>
                     {/* <h3>Bienvenue </h3> */}
-                    <p>connectez-vous pour continuer</p>
+                    <p>Sign in to continue</p>
                     <div>
                         <label htmlFor='email'>Email</label>
                         <input
                             type='email'
-                            placeholder='Entrer votre email'
+                            placeholder='Enter your email'
                             name='email'
                             value={user.email}
                             onChange={handleOnChange}
@@ -71,10 +71,10 @@ export default function Login() {
                             position: "relative",
                         }}
                     >
-                        <label htmlFor='password'>Mot de passe</label>
+                        <label htmlFor='password'>Password</label>
                         <input
                             type={showPass ? "text" : "password"}
-                            placeholder='Entrer votre mot de passe'
+                            placeholder='Enter your password'
                             name='password'
                             value={user.password}
                             onChange={handleOnChange}
@@ -118,10 +118,10 @@ export default function Login() {
                     )}
 
                     <div>
-                        <button type='submit'>Se connecter</button>
+                        <button type='submit'>Sign in</button>
                         {/* <span className='psw'>
                             <a href={ROUTER.AUTH.FORGET_PASS}>
-                                Mot de passe oublié?
+                                Forgot password?
                             </a>
                         </span> */}
                     </div>

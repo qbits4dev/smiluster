@@ -27,13 +27,13 @@ const initialState: any = {
     },
     sexeOptions: [
         {
-            label: "Homme",
+            label: "Male",
             value: "male",
             color: "#78b4e3",
             iconType: "male",
         },
         {
-            label: "Femme",
+            label: "Female",
             value: "female",
             color: "#e75c8b",
             iconType: "female",
