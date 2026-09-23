@@ -177,10 +177,10 @@
     "semver": "^7.5.4",
     "send": "^1.2.1",
     "sentence-case": "^3.0.4",
-    "sequelize": "^6.32.1",
+    "sequelize": "^3.30.0",
     "sequelize-pool": "^7.1.0",
-    "sequelize-typescript": "^2.1.5",
-    "sequelize-typescript-generator": "^10.1.2",
+    "sequelize-typescript": "^0.6.11",
+    "sequelize-typescript-generator": "^2.7.2",
     "serve-static": "^1.15.0",
     "setprototypeof": "^1.2.0",
     "shebang-command": "^2.0.0",
@@ -237,5 +237,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "allowScripts": {
+    "bcrypt@5.1.1": true
+  }
 }
