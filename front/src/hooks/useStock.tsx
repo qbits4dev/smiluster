@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppDispatch, useAppSelector } from "./useReduxHooks";
 import { API } from "../constants/env";
+import { parseErrorMessage } from "../utils/functions";
 
 import {
     updateStock,
@@ -31,11 +32,11 @@ export const useStock = () => {
                 dispatch(updateCreateStock({ error: null }));
                 return true;
             } else {
-                dispatch(updateCreateStock({ error: data.error }));
+                dispatch(updateCreateStock({ error: parseErrorMessage(data.error) }));
                 return false;
             }
         } catch (error) {
-            dispatch(updateCreateStock({ error }));
+            dispatch(updateCreateStock({ error: parseErrorMessage(error) }));
             return false;
         }
     };
@@ -74,11 +75,11 @@ export const useStock = () => {
                 dispatch(updateEditStock({ error: null }));
                 return true;
             } else {
-                dispatch(updateEditStock({ error: data.error }));
+                dispatch(updateEditStock({ error: parseErrorMessage(data.error) }));
                 return false;
             }
         } catch (error) {
-            dispatch(updateEditStock({ error }));
+            dispatch(updateEditStock({ error: parseErrorMessage(error) }));
             return false;
         }
     };
@@ -98,11 +99,11 @@ export const useStock = () => {
                 dispatch(updateDeleteStock({ error: null }));
                 return true;
             } else {
-                dispatch(updateDeleteStock({ error: data.error }));
+                dispatch(updateDeleteStock({ error: parseErrorMessage(data.error) }));
                 return false;
             }
         } catch (error) {
-            dispatch(updateDeleteStock({ error }));
+            dispatch(updateDeleteStock({ error: parseErrorMessage(error) }));
             return false;
         }
     };
@@ -129,11 +130,11 @@ export const useStock = () => {
                 dispatch(setStockList(data));
                 dispatch(updateStock({ error: null }));
             } else {
-                dispatch(updateStock({ error: data.error }));
+                dispatch(updateStock({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updateStock({ loading: false }));
         } catch (error) {
-            dispatch(updateStock({ error, loading: false }));
+            dispatch(updateStock({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleGetProducts = async () => {
@@ -154,10 +155,10 @@ export const useStock = () => {
                     })
                 );
             } else {
-                dispatch(updateProducts({ error: data.error }));
+                dispatch(updateProducts({ error: parseErrorMessage(data.error) }));
             }
         } catch (error) {
-            dispatch(updateProducts({ error }));
+            dispatch(updateProducts({ error: parseErrorMessage(error) }));
         }
     };
     const handleRemoveErrors = () => {
@@ -188,11 +189,11 @@ export const useStock = () => {
                 );
                 return true;
             } else {
-                dispatch(updateProducts({ error: data.error }));
+                dispatch(updateProducts({ error: parseErrorMessage(data.error) }));
                 return false;
             }
         } catch (error) {
-            dispatch(updateProducts({ error }));
+            dispatch(updateProducts({ error: parseErrorMessage(error) }));
             return false;
         }
     };

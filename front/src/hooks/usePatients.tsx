@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppDispatch, useAppSelector } from "./useReduxHooks";
 import { API } from "../constants/env";
+import { parseErrorMessage } from "../utils/functions";
 
 import {
     updatePatients,
@@ -34,14 +35,14 @@ export const usePatients = () => {
                 if (response.ok) {
                     await dispatch(updatePatient({ data, message: "" }));
                 } else {
-                    await dispatch(updatePatient({ error: data.error }));
+                    await dispatch(updatePatient({ error: parseErrorMessage(data.error) }));
                 }
                 await dispatch(updatePatient({ loading: false }));
             } else {
                 console.log("please provide a licenseID first");
             }
         } catch (error) {
-            await dispatch(updatePatient({ error, loading: false }));
+            await dispatch(updatePatient({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleGetPatient = async (patientID: string) => {
@@ -58,11 +59,11 @@ export const usePatients = () => {
             if (response.ok) {
                 dispatch(updatePatient({ data, error: null }));
             } else {
-                dispatch(updatePatient({ error: data.error }));
+                dispatch(updatePatient({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updatePatient({ loading: false }));
         } catch (error) {
-            dispatch(updatePatient({ error, loading: false }));
+            dispatch(updatePatient({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleDeletePatient = async (patientID: string) => {
@@ -80,12 +81,12 @@ export const usePatients = () => {
                 dispatch(updatePatient({ data, message: "" }));
                 return true;
             } else {
-                dispatch(updatePatient({ error: data.error }));
+                dispatch(updatePatient({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updatePatient({ loading: false }));
             return false;
         } catch (error) {
-            dispatch(updatePatient({ error, loading: false }));
+            dispatch(updatePatient({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
         return false;
@@ -110,11 +111,11 @@ export const usePatients = () => {
             if (response.ok) {
                 dispatch(updatePatient({ data, message: "" }));
             } else {
-                dispatch(updatePatient({ error: data.error }));
+                dispatch(updatePatient({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updatePatient({ loading: false }));
         } catch (error) {
-            dispatch(updatePatient({ error, loading: false }));
+            dispatch(updatePatient({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleGetPatients = async () => {
@@ -163,11 +164,11 @@ export const usePatients = () => {
                 });
                 dispatch(updatePatients({ data, message: "" }));
             } else {
-                dispatch(updatePatients({ error: data.error }));
+                dispatch(updatePatients({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updatePatients({ loading: false }));
         } catch (error) {
-            dispatch(updatePatients({ error, loading: false }));
+            dispatch(updatePatients({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleRemovePatientsErrors = () => {

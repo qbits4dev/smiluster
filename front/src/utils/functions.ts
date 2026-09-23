@@ -55,3 +55,20 @@ export function reverseAppointmentDateTime(formattedDateTime: string) {
 
     return reversedDateTime;
 }
+
+export function parseErrorMessage(error: any): string | null {
+    if (!error) return null;
+    if (typeof error === "string") return error;
+    if (error instanceof Error) return error.message;
+    if (typeof error === "object") {
+        if (typeof error.message === "string") return error.message;
+        if (typeof error.error === "string") return error.error;
+        try {
+            return JSON.stringify(error);
+        } catch {
+            return String(error);
+        }
+    }
+    return String(error);
+}
+

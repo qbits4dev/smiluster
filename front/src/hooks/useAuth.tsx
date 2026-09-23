@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "./useReduxHooks";
 import { API, ROUTER } from "../constants/env";
 import { useNavigate } from "react-router-dom";
+import { parseErrorMessage } from "../utils/functions";
 
 import {
     setLogin,
@@ -32,12 +33,12 @@ export const useAuth = () => {
                 navigate(ROUTER.APPOINTMENTS);
             } else {
                 alert("error");
-                dispatch(setLogin({ error: data.error }));
+                dispatch(setLogin({ error: parseErrorMessage(data.error) }));
             }
             dispatch(setLogin({ loading: false }));
         } catch (error) {
             alert("error");
-            dispatch(setLogin({ error, loading: false }));
+            dispatch(setLogin({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleLogout = () => {
@@ -60,11 +61,11 @@ export const useAuth = () => {
                 dispatch(setForgotPassword({ message: data.message }));
                 dispatch(setForgotPassword({ error: null }));
             } else {
-                dispatch(setForgotPassword({ error: data.error }));
+                dispatch(setForgotPassword({ error: parseErrorMessage(data.error) }));
             }
             dispatch(setForgotPassword({ loading: false }));
         } catch (error) {
-            dispatch(setForgotPassword({ error, loading: false }));
+            dispatch(setForgotPassword({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleResetPassword = async (user: any) => {
@@ -86,11 +87,11 @@ export const useAuth = () => {
                 dispatch(setResetPassword({ error: null }));
                 navigate(ROUTER.AUTH.LOGIN);
             } else {
-                dispatch(setResetPassword({ error: data.error }));
+                dispatch(setResetPassword({ error: parseErrorMessage(data.error) }));
             }
             dispatch(setResetPassword({ loading: false }));
         } catch (error) {
-            dispatch(setResetPassword({ error, loading: false }));
+            dispatch(setResetPassword({ error: parseErrorMessage(error), loading: false }));
         }
     };
     return {

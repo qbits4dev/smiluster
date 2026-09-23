@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppDispatch, useAppSelector } from "./useReduxHooks";
 import { API } from "../constants/env";
+import { parseErrorMessage } from "../utils/functions";
 
 import {
     updateDocuments,
@@ -54,14 +55,14 @@ export const useDocuments = () => {
             } else {
                 dispatch(
                     updateCreateDocument({
-                        error: data.error,
+                        error: parseErrorMessage(data.error),
                         loading: false,
                     }),
                 );
                 return false;
             }
         } catch (error) {
-            dispatch(updateCreateDocument({ error, loading: false }));
+            dispatch(updateCreateDocument({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
     };
@@ -89,14 +90,14 @@ export const useDocuments = () => {
             } else {
                 dispatch(
                     updateEditDocument({
-                        error: data.error,
+                        error: parseErrorMessage(data.error),
                         loading: false,
                     }),
                 );
                 return false;
             }
         } catch (error) {
-            dispatch(updateEditDocument({ error, loading: false }));
+            dispatch(updateEditDocument({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
     };
@@ -117,12 +118,12 @@ export const useDocuments = () => {
                 return true;
             } else {
                 dispatch(
-                    updateDeleteDocument({ error: data.error, loading: false }),
+                    updateDeleteDocument({ error: parseErrorMessage(data.error), loading: false }),
                 );
                 return false;
             }
         } catch (error) {
-            dispatch(updateDeleteDocument({ error, loading: false }));
+            dispatch(updateDeleteDocument({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
     };
@@ -201,11 +202,11 @@ export const useDocuments = () => {
             if (response.ok) {
                 dispatch(updateDocuments({ data, message: "" }));
             } else {
-                dispatch(updateDocuments({ error: data.error }));
+                dispatch(updateDocuments({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updateDocuments({ loading: false }));
         } catch (error) {
-            dispatch(updateDocuments({ error, loading: false }));
+            dispatch(updateDocuments({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const resetError = () => {

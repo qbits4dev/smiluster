@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "./useReduxHooks";
 import { API } from "../constants/env";
+import { parseErrorMessage } from "../utils/functions";
 
 import {
     updateTeeth,
@@ -26,11 +27,11 @@ export const useChart = () => {
                 dispatch(updateTeeth(data));
                 dispatch(setError(null));
             } else {
-                dispatch(setError(data.error));
+                dispatch(setError(parseErrorMessage(data.error)));
             }
             // dispatch(updatePatient({ loading: false }));
         } catch (error) {
-            dispatch(setError(error));
+            dispatch(setError(parseErrorMessage(error)));
 
             // dispatch(updatePatient({ error, loading: false }));
         }
@@ -128,12 +129,12 @@ export const useChart = () => {
             if (response.ok) {
                 return data;
             } else {
-                dispatch(setError(data.error));
+                dispatch(setError(parseErrorMessage(data.error)));
                 return false;
             }
             // dispatch(updatePatient({ loading: false }));
         } catch (error) {
-            dispatch(setError(error));
+            dispatch(setError(parseErrorMessage(error)));
             return false;
             // dispatch(updatePatient({ error, loading: false }));
         }
@@ -153,7 +154,7 @@ export const useChart = () => {
                 dispatch(setError(null));
                 return data;
             } else {
-                dispatch(setError(data.error));
+                dispatch(setError(parseErrorMessage(data.error)));
                 return false;
             }
         } catch (error) {

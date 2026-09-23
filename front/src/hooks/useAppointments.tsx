@@ -2,6 +2,7 @@
 import { useAppDispatch, useAppSelector } from "./useReduxHooks";
 import { API } from "../constants/env";
 import { usePagination } from "./usePagination";
+import { parseErrorMessage } from "../utils/functions";
 import {
     updateAppointments,
     updateAppointmentsFilters,
@@ -47,14 +48,14 @@ export const useAppointments = () => {
             } else {
                 dispatch(
                     updateCreateAppointment({
-                        error: data.error,
+                        error: parseErrorMessage(data.error),
                         loading: false,
                     }),
                 );
                 return false;
             }
         } catch (error) {
-            dispatch(updateCreateAppointment({ error, loading: false }));
+            dispatch(updateCreateAppointment({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
     };
@@ -184,14 +185,14 @@ export const useAppointments = () => {
             } else {
                 dispatch(
                     updateEditAppointment({
-                        error: data.error,
+                        error: parseErrorMessage(data.error),
                         loading: false,
                     }),
                 );
                 return false;
             }
         } catch (error) {
-            dispatch(updateEditAppointment({ error, loading: false }));
+            dispatch(updateEditAppointment({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
     };
@@ -224,14 +225,14 @@ export const useAppointments = () => {
             } else {
                 dispatch(
                     updateDeleteAppointment({
-                        error: data.error,
+                        error: parseErrorMessage(data.error),
                         loading: false,
                     }),
                 );
                 return false;
             }
         } catch (error) {
-            dispatch(updateDeleteAppointment({ error, loading: false }));
+            dispatch(updateDeleteAppointment({ error: parseErrorMessage(error), loading: false }));
             return false;
         }
     };
@@ -323,11 +324,11 @@ export const useAppointments = () => {
                 });
                 dispatch(updateAppointments({ data, message: "" }));
             } else {
-                dispatch(updateAppointments({ error: data.error }));
+                dispatch(updateAppointments({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updateAppointments({ loading: false }));
         } catch (error) {
-            dispatch(updateAppointments({ error, loading: false }));
+            dispatch(updateAppointments({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleGetPatientAppointments = async () => {
@@ -362,11 +363,11 @@ export const useAppointments = () => {
             if (response.ok) {
                 dispatch(updatePatientAppointments({ data, message: "" }));
             } else {
-                dispatch(updatePatientAppointments({ error: data.error }));
+                dispatch(updatePatientAppointments({ error: parseErrorMessage(data.error) }));
             }
             dispatch(updatePatientAppointments({ loading: false }));
         } catch (error) {
-            dispatch(updatePatientAppointments({ error, loading: false }));
+            dispatch(updatePatientAppointments({ error: parseErrorMessage(error), loading: false }));
         }
     };
     const handleGetCalendarData = async (startDay: string, endDay: string) => {
