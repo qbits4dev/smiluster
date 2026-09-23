@@ -16,7 +16,7 @@ export default function AddAppointmentCard(props: any) {
 
     const popupButtons = [
         {
-            text: "Supprimer",
+            text: "Delete",
             style: {
                 backgroundColor: "var(--color-1)",
                 color: "white",
@@ -26,7 +26,7 @@ export default function AddAppointmentCard(props: any) {
             onClick: onDelete,
         },
         {
-            text: "Annuler",
+            text: "Cancel",
             style: {
                 backgroundColor: "white",
                 color: "var(--gray-1)",
@@ -40,7 +40,7 @@ export default function AddAppointmentCard(props: any) {
     return (
         <Modal modalEnabled={display} onClose={onClose}>
             <PopupCard
-                title={"Supprimer " + name}
+                title={"Delete " + name}
                 activatedFooter={true}
                 onClose={onClose}
                 display={display}
@@ -56,7 +56,7 @@ export default function AddAppointmentCard(props: any) {
                         lineHeight: "2",
                     }}
                 >
-                    Confirmez-vous la suppression de {name || "ceci"} ?
+                    Are you sure you want to delete {name || "this"}?
                 </div>
 
                 {additionalText && (

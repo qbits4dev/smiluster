@@ -107,7 +107,7 @@ export default function AddStockCard(props: AddStockCardProps) {
     };
     const buttons = [
         {
-            text: "Annuler",
+            text: "Cancel",
             style: {
                 backgroundColor: "white",
                 color: "var(--gray-1)",
@@ -117,7 +117,7 @@ export default function AddStockCard(props: AddStockCardProps) {
             onClick: handleClose,
         },
         {
-            text: toEdit ? "Modifier" : "Ajouter",
+            text: toEdit ? "Edit" : "Add",
             style: {
                 backgroundColor: "var(--color-1)",
                 color: "white",
@@ -171,7 +171,7 @@ export default function AddStockCard(props: AddStockCardProps) {
     return (
         <Modal modalEnabled={display} onClose={handleClose}>
             <PopupCard
-                title={`${toEdit ? "Modifier le" : "Ajouter un"} stock`}
+                title={`${toEdit ? "Edit" : "Add"} Stock`}
                 activatedFooter={true}
                 onClose={handleClose}
                 display={display}
@@ -189,8 +189,8 @@ export default function AddStockCard(props: AddStockCardProps) {
                             setProduct(null);
                         }}
                         onDelete={handleOnDeleteProduct}
-                        name={`le produit "${product?.productName || ""}"`}
-                        additionalText='Attention !! En supprimant ce produit, tous les stocks associés seront également supprimés..'
+                        name={`product "${product?.productName || ""}"`}
+                        additionalText='Warning! By deleting this product, all associated stock items will also be deleted.'
                         alert={true}
                     />
                     <form
@@ -201,43 +201,9 @@ export default function AddStockCard(props: AddStockCardProps) {
                         <div className='add-stock-infos'>
                             <div className='info-item'>
                                 <label htmlFor='productId'>
-                                    Choisir un produit
+                                    Select a product
                                     <Star />
                                 </label>
-                                {/* <input
-                                    id='productId'
-                                    name='productId'
-                                    type='text'
-                                    value={stock.productId}
-                                    onChange={handleOnChange}
-                                /> */}
-                                {/* <Select
-                                    options={productsOptions}
-                                    styles={colorStyles}
-                                    theme={(theme) => ({
-                                        ...theme,
-                                        colors: {
-                                            ...theme.colors,
-                                            primary: "var(--color-1)",
-                                        },
-                                    })}
-                                    isSearchable={true}
-                                    placeholder='Selectionner...'
-                                    noOptionsMessage={() => "Aucune option"}
-                                    value={selectedProductOption}
-                                    onChange={(item) => {
-                                        if (item?.value) {
-                                            setNewStock((prev: any) => ({
-                                                ...prev,
-                                                productID: item.value,
-                                            }));
-                                            setSelectedProductOption({
-                                                label: item.label,
-                                                value: item.value,
-                                            });
-                                        }
-                                    }}
-                                /> */}
                                 <div
                                     style={{
                                         display: "flex",
@@ -309,18 +275,8 @@ export default function AddStockCard(props: AddStockCardProps) {
                                                     <SVGIcon
                                                         type='trash'
                                                         color='white'
-                                                        // height={30}
-                                                        // width={30}
                                                     />
                                                 </div>
-                                                {/* <div
-                                                    style={{
-                                                        fontSize: "11px",
-                                                        color: "var(--color-3)",
-                                                    }}
-                                                >
-                                                    min: {product.minQuantity}
-                                                </div> */}
                                             </div>
                                         );
                                     })}
@@ -345,7 +301,7 @@ export default function AddStockCard(props: AddStockCardProps) {
                             </div>
                             <div className='info-item'>
                                 <label htmlFor='quantity'>
-                                    Qantité
+                                    Quantity
                                     <Star />
                                 </label>
                                 <input
@@ -359,7 +315,7 @@ export default function AddStockCard(props: AddStockCardProps) {
                             </div>
                             <div className='info-item'>
                                 <label htmlFor='price'>
-                                    Prix
+                                    Price
                                     <Star />
                                 </label>
                                 <input
@@ -373,7 +329,7 @@ export default function AddStockCard(props: AddStockCardProps) {
                             </div>
                             <div className='info-item'>
                                 <label htmlFor=''>
-                                    Fournisseur
+                                    Supplier
                                     <Star />
                                 </label>
                                 <input
@@ -399,7 +355,7 @@ export default function AddStockCard(props: AddStockCardProps) {
                                             }}
                                         >
                                             <label htmlFor='expiredDate'>
-                                                Date d'expiration
+                                                Expiration Date
                                             </label>
                                             <input
                                                 id='expiredDate'
@@ -435,7 +391,7 @@ export default function AddStockCard(props: AddStockCardProps) {
                                 </>
                             ) : (
                                 <Button
-                                    text="Ajouter une date d'expiration"
+                                    text="Add an expiration date"
                                     iconName='add'
                                     iconWidth={20}
                                     iconHeight={20}

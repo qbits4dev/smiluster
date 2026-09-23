@@ -31,7 +31,7 @@ export default function Appointments() {
     return (
         <div className='appointment-page'>
             <div className='top'>
-                <div className='page-title'>Calendrier de Rendez-vous</div>
+                <div className='page-title'>Appointment Calendar</div>
             </div>
             {/* <div className='head main-box'>
                 <Button

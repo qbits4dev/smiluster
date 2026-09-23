@@ -45,7 +45,7 @@ export default function Header(props: any) {
         //     link: ROUTER.PROFILE,
         // },
         {
-            label: "Paramètres",
+            label: "Settings",
             icon: (
                 <SVGIcon
                     type="settings"
@@ -57,7 +57,7 @@ export default function Header(props: any) {
             link: ROUTER.SETTINGS,
         },
         {
-            label: "Se déconnecter",
+            label: "Logout",
             icon: (
                 <SVGIcon
                     type="logout"
@@ -252,7 +252,7 @@ export default function Header(props: any) {
                     />
                 </div>
                 <div className="username">
-                    <span>Bonjour,</span> Dr.
+                    <span>Hello,</span> Dr.
                     {auth.user?.firstName + " " + auth.user?.lastName}
                 </div>
                 <div className="dropdown-icon center">

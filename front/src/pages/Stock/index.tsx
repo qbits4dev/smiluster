@@ -28,11 +28,11 @@ export default function Stock() {
     const tableDataStructure = {
         header: {
             dataHead: [
-                { value: "Produit" },
-                { value: "Fournisseur" },
-                { value: "Prix" },
-                { value: "quantité" },
-                { value: "Date d'expiration" },
+                { value: "Product" },
+                { value: "Supplier" },
+                { value: "Price" },
+                { value: "Quantity" },
+                { value: "Expiration Date" },
                 { value: "Note" },
             ],
             style: {},
@@ -70,7 +70,7 @@ export default function Stock() {
                                 <div>{date}</div>
                             ) : (
                                 <div style={{ opacity: "0.25" }}>
-                                    pas d'expiration
+                                    no expiration
                                 </div>
                             ),
                         },
@@ -79,7 +79,7 @@ export default function Stock() {
                                 <div>{row.note}</div>
                             ) : (
                                 <div style={{ opacity: "0.25" }}>
-                                    pas de note
+                                    no note
                                 </div>
                             ),
                         },
@@ -118,7 +118,7 @@ export default function Stock() {
     };
     const tableOptions = [
         {
-            label: "Modifier",
+            label: "Edit",
             icon: (
                 <SVGIcon
                     type='edit'
@@ -130,7 +130,7 @@ export default function Stock() {
             onClick: onUpdateStock,
         },
         {
-            label: "Supprimer",
+            label: "Delete",
             icon: (
                 <SVGIcon
                     type='trash'
@@ -144,7 +144,7 @@ export default function Stock() {
     ];
     return (
         <div className='stock-list-page'>
-            <div className='page-title'>Gestion De Stock</div>
+            <div className='page-title'>Stock Management</div>
             <AddStockCard
                 display={showAddCard}
                 onClose={handleCloseCard}
@@ -154,15 +154,12 @@ export default function Stock() {
                 display={openDeleteCard.display}
                 onClose={() => setOpenDeleteCard({ display: false, id: "" })}
                 onDelete={handleOnDeleteStock}
-                name='ce stock'
+                name='this stock'
             />
-            {/* <div className='head main-box'>
-               
-            </div> */}
             <div className='stock-list main-box'>
                 <form className='filters'>
                     <div>
-                        <label htmlFor=''>Rechercher</label>
+                        <label htmlFor=''>Search</label>
                         <label></label>
                         <div className='search'>
                             <SVGIcon
@@ -173,7 +170,7 @@ export default function Stock() {
                             />
                             <input
                                 type='text'
-                                placeholder='Rechercher...'
+                                placeholder='Search...'
                                 name='search'
                                 onChange={handleOnChange}
                                 value={stock.filterBy.search}
@@ -181,7 +178,7 @@ export default function Stock() {
                         </div>
                     </div>
                     <div className='expiredBefore'>
-                        <label htmlFor='expiredBefore'>Expiré avant le</label>
+                        <label htmlFor='expiredBefore'>Expired before</label>
                         <input
                             id='expiredBefore'
                             type='date'
@@ -191,7 +188,7 @@ export default function Stock() {
                         />
                     </div>
                     <div className='price'>
-                        <label htmlFor='minPrice'>Prix min(DNT)</label>
+                        <label htmlFor='minPrice'>Min Price (TND)</label>
                         <input
                             id='minPrice'
                             type='number'
@@ -202,7 +199,7 @@ export default function Stock() {
                         />
                     </div>
                     <div className='price'>
-                        <label htmlFor='maxPrice'>Prix max(DNT)</label>
+                        <label htmlFor='maxPrice'>Max Price (TND)</label>
                         <input
                             id='maxPrice'
                             type='number'
@@ -213,7 +210,7 @@ export default function Stock() {
                         />
                     </div>
                     <div className='quantity'>
-                        <label htmlFor='quantity'>Quantité (pièces)</label>
+                        <label htmlFor='quantity'>Quantity (items)</label>
                         <input
                             id='quantity'
                             type='number'
@@ -224,7 +221,7 @@ export default function Stock() {
                         />
                     </div>
                     <Button
-                        text='Ajouter Stock'
+                        text='Add Stock'
                         iconName='add'
                         iconWidth={20}
                         iconHeight={20}
@@ -246,7 +243,7 @@ export default function Stock() {
                         pagination={false}
                         tableDataStructure={tableDataStructure}
                         tableOptions={tableOptions}
-                        noDataMessage='Aucun stock trouvé'
+                        noDataMessage='No stock items found'
                         loading={stock.loading}
                     />
                 </div>

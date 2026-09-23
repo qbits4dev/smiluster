@@ -72,23 +72,23 @@ export default function Invoicing() {
         setFilter({ search: searchText });
     };
     const statusOptions = [
-        { value: "payed-status", label: "Soldée", color: "#53BC57" },
-        { value: "part-payed", label: "Part-soldée", color: "#F1B519" },
-        { value: "impayed", label: "Non soldée", color: "#EC5252" },
+        { value: "payed-status", label: "Paid", color: "#53BC57" },
+        { value: "part-payed", label: "Partially Paid", color: "#F1B519" },
+        { value: "impayed", label: "Unpaid", color: "#EC5252" },
     ];
     const StatusButton = (
         status: "payed-status" | "impayed" | "part-payed",
     ) => {
         let colorStyle = "#EC5252";
-        let text = "Non soldée";
+        let text = "Unpaid";
         switch (status) {
             case "payed-status":
                 colorStyle = "#53BC57";
-                text = "Soldée";
+                text = "Paid";
                 break;
             case "part-payed":
                 colorStyle = "#F1B519";
-                text = "Part-soldée";
+                text = "Partially Paid";
                 break;
             default:
         }
@@ -152,118 +152,6 @@ export default function Invoicing() {
                 { value: oneRow.restAmount },
                 { value: StatusButton(oneRow.status) },
             ];
-            // const detailedInvoice = oneRow.details.map((detailInvoiceItem) => {
-            //     if (detailInvoiceItem.type === "payment") {
-            //         return [
-            //             { value: "" },
-            //             {
-            //                 value: <div>Montant payé</div>,
-            //             },
-            //             {
-            //                 value: `${detailInvoiceItem.date} ${detailInvoiceItem.time}`,
-            //             },
-            //             {
-            //                 value: `${detailInvoiceItem.cost} TND`,
-            //             },
-            //         ];
-            //     } else {
-            //         return [
-            //             { value: "" },
-            //             {
-            //                 value: <div>Montant à payer</div>,
-            //             },
-            //             {
-            //                 value: `${detailInvoiceItem.date} ${detailInvoiceItem.time}`,
-            //             },
-            //             {
-            //                 value: `${detailInvoiceItem.cost} TND avec ${detailInvoiceItem.paidAmount} payé`,
-            //             },
-            //         ];
-            //     }
-            // });
-            // const InvoiceDetailedComponent = () => {
-            //     const paymentDuringAppt = (paidAmoint: number) => {
-            //         if (paidAmoint > 0) {
-            //             return `[${paidAmoint}TND payé]`;
-            //         } else {
-            //             return "[Aucun paiement]";
-            //         }
-            //     };
-            //     return (
-            //         <>
-            //             {oneRow.details.map(
-            //                 (detailedInvoice: any, index: any) => {
-            //                     return (
-            //                         <tr
-            //                             key={index}
-            //                             style={{
-            //                                 backgroundColor:
-            //                                     index % 2
-            //                                         ? "white"
-            //                                         : "var(--wh-slate-200)",
-            //                             }}
-            //                         >
-            //                             <td colSpan={9}>
-            //                                 <div
-            //                                     style={{
-            //                                         display: "flex",
-            //                                         justifyContent: "center",
-            //                                         alignItems: "center",
-            //                                         gap: "15%",
-            //                                     }}
-            //                                 >
-            //                                     <div
-            //                                         style={{
-            //                                             width: "10%",
-            //                                             display: "flex",
-            //                                             justifyContent:
-            //                                                 "center",
-            //                                             textAlign: "left",
-            //                                         }}
-            //                                     >
-            //                                         {detailedInvoice.type ==
-            //                                         "payment"
-            //                                             ? "Montant payé"
-            //                                             : "Montant à payer"}
-            //                                     </div>
-            //                                     <div
-            //                                         style={{
-            //                                             width: "10%",
-            //                                             display: "flex",
-            //                                             justifyContent:
-            //                                                 "center",
-            //                                             textAlign: "left",
-            //                                         }}
-            //                                     >
-            //                                         {`${detailedInvoice.date} ${detailedInvoice.time}`}
-            //                                     </div>
-            //                                     <div
-            //                                         style={{
-            //                                             width: "20%",
-            //                                             display: "flex",
-            //                                             justifyContent:
-            //                                                 "center",
-            //                                             textAlign: "left",
-            //                                         }}
-            //                                     >
-            //                                         {detailedInvoice.type ==
-            //                                         "payment"
-            //                                             ? `${detailedInvoice.cost} TND`
-            //                                             : `${
-            //                                                   detailedInvoice.cost
-            //                                               } TND + ${paymentDuringAppt(
-            //                                                   detailedInvoice.paidAmount
-            //                                               )}`}
-            //                                     </div>
-            //                                 </div>
-            //                             </td>
-            //                         </tr>
-            //                     );
-            //                 }
-            //             )}
-            //         </>
-            //     );
-            // };
             return {
                 dataRow: generalInvoiceInfo,
                 id: oneRow.id,
@@ -272,19 +160,19 @@ export default function Invoicing() {
                     handleMoreDetailsOnInvoiceByID(oneRow.id);
                 },
                 isExtraDataOpen: false,
-                extraData: null, //<InvoiceDetailedComponent />,
+                extraData: null,
             };
         });
         return {
             header: {
                 dataHead: [
-                    { value: "Réf." },
+                    { value: "Ref." },
                     { value: "Patient" },
-                    { value: "Date de Facturation" },
-                    { value: "Montant Total" },
-                    { value: "Montant Payé" },
-                    { value: "Montant Restant" },
-                    { value: "État" },
+                    { value: "Invoice Date" },
+                    { value: "Total Amount" },
+                    { value: "Paid Amount" },
+                    { value: "Remaining Amount" },
+                    { value: "Status" },
                 ],
                 style: {},
                 onClickRow: () => { },
@@ -329,52 +217,13 @@ export default function Invoicing() {
         setIshowInvoicePopupDisplayed(false);
     };
 
-    // const handleAssociateAppointment = () => {};
     return (
         <div className="invoicing-page">
-            <div className="page-title">Facturation</div>
-            {/*<div className='head main-box'>
-                <Button
-                    text={`${isIncome ? "Ajouter Revenus" : "Ajouter Dépense"}`}
-                    iconName='add'
-                    iconWidth={20}
-                    iconHeight={20}
-                    iconColor='white'
-                    onClick={handleOpenCard}
-                />
-                <AddInvoicingCard
-                    display={showAddCard}
-                    onClose={handleCloseCard}
-                />
-                <div className='invoicing-views-tabs'>
-                    <Button
-                        text='Revenus'
-                        onClick={toggleInvoicingView}
-                        style={{
-                            backgroundColor: `${
-                                isIncome ? "var(--color-1)" : "transparent"
-                            }`,
-                            color: `${!isIncome ? "var(--color-1)" : "white"}`,
-                            borderRadius: 0,
-                        }}
-                    />
-                    <Button
-                        text='Dépenses'
-                        onClick={toggleInvoicingView}
-                        style={{
-                            backgroundColor: `${
-                                !isIncome ? "var(--color-1)" : "transparent"
-                            }`,
-                            color: `${isIncome ? "var(--color-1)" : "white"}`,
-                            borderRadius: 0,
-                        }}
-                    />
-                </div> 
-            </div>*/}
+            <div className="page-title">Invoicing & Billing</div>
             <div className="invoicing-list main-box">
                 <form className="filters">
                     <div>
-                        <label htmlFor="search">Rechercher </label>
+                        <label htmlFor="search">Search </label>
                         <div className="search">
                             <SVGIcon
                                 type={"search"}
@@ -387,17 +236,16 @@ export default function Invoicing() {
                                     height: "38px",
                                 }}
                                 type="text"
-                                placeholder="Rechercher"
+                                placeholder="Search"
                                 name="search"
                                 onChange={handleOnChange}
                             />
                         </div>
                     </div>
                     <div className="status">
-                        <label htmlFor="">Statut </label>
+                        <label htmlFor="">Status </label>
                         <Select
                             styles={{
-                                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                                 control: (styles: any) => ({
                                     ...styles,
                                     minWidth: "140px",
@@ -461,36 +309,10 @@ export default function Invoicing() {
                                     ...provided,
                                     height: "35px",
                                 }),
-
-                                // control: (provided, state) => ({
-                                //     ...provided,
-                                //     height: "40px",
-                                //     border: "1px solid var(--color-2)",
-                                // }),
-                                // option: (provided, state) => ({
-                                //     ...provided,
-                                //     textAlign: "center",
-                                //     textWrap: "nowrap",
-                                //     padding: "8px 4px",
-                                // }),
-
-                                // input: (provided, state) => ({
-                                //     ...provided,
-                                //     margin: 0,
-                                //     padding: 0,
-                                // }),
-                                // indicatorSeparator: (state) => ({
-                                //     display: "none",
-                                // }),
-                                // indicatorsContainer: (provided, state) => ({
-                                //     ...provided,
-                                //     height: "38px",
-                                // }),
                             }}
                             options={statusOptions}
                             onChange={handleStatus}
                             isMulti
-                        // menuIsOpen={true}
                         />
                     </div>
                     <div className="date">
@@ -506,23 +328,16 @@ export default function Invoicing() {
                 <div className="list">
                     <Table
                         tableDataStructure={tableContent()}
-                        // paginationState={pagination}
                         tableOptions={[
                             {
-                                label: "Ajouter Paiement",
+                                label: "Add Payment",
                                 icon: <CartSVG width={20} height={20} />,
                                 link: null,
                                 onClick: handleAddNewPayment,
                             },
-                            // {
-                            //     label: "Associer Rendez-vous",
-                            //     icon: <CardSVG />,
-                            //     link: null,
-                            //     onClick: handleAssociateAppointment,
-                            // },
                         ]}
                         loading={invoicing.loading}
-                        noDataMessage="Aucune facture trouvée"
+                        noDataMessage="No invoices found"
                     />
                     <AddPaymentCard
                         display={isAddPaymentCardOpen}

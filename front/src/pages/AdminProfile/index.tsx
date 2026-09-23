@@ -74,7 +74,7 @@ export default function AdminProfile() {
                                     color: "var(--gray-1)",
                                 }}
                             >
-                                Nom:
+                                Last Name:
                             </span>{" "}
                             {user.lastName}
                         </div>
@@ -91,7 +91,7 @@ export default function AdminProfile() {
                                     color: "var(--gray-1)",
                                 }}
                             >
-                                Prénon:
+                                First Name:
                             </span>{" "}
                             {user.firstName}
                         </div>
@@ -142,7 +142,7 @@ export default function AdminProfile() {
                                     color: "var(--gray-1)",
                                 }}
                             >
-                                Téléphone:
+                                Phone:
                             </span>{" "}
                             {user.phone}
                         </div>

@@ -158,11 +158,11 @@ export default function PatientProfile() {
                 display={showDeleteCard}
                 onClose={() => setShowDeleteCard(false)}
                 onDelete={handleOnDeleteAppointment}
-                name="ce patient"
-                additionalText="Attention !! En supprimant ce patient, toutes les rendez-vous, documents et opérations dentaires liés à ce patient seront également supprimés."
+                name="this patient"
+                additionalText="Warning! By deleting this patient, all associated appointments, documents, and dental procedures will also be deleted."
                 alert={true}
             />
-            <div className="page-title">Fiche patient</div>
+            <div className="page-title">Patient Profile</div>
             {patient.loading ? (
                 <div
                     className="patient-profile-page center main-box"
@@ -222,7 +222,7 @@ export default function PatientProfile() {
                         </div>
                         <div className="info-list" style={{ overflow: "auto" }}>
                             <div className="data-slice">
-                                <div className="data-name">Téléphone</div>
+                                <div className="data-name">Phone</div>
                                 <div className="data-text">
                                     {patient.data?.phoneNumber}
                                 </div>
@@ -238,8 +238,8 @@ export default function PatientProfile() {
                             {patient.data?.dateOfBirth ? (
                                 <div className="data-slice">
                                     <div className="data-name">
-                                        Date de naissance (
-                                        <b> {patientBirthDay?.age}</b> ans)
+                                        Date of Birth (
+                                        <b> {patientBirthDay?.age}</b> years old)
                                     </div>
                                     <div className="data-text">
                                         {patientBirthDay?.day}
@@ -248,14 +248,14 @@ export default function PatientProfile() {
                             ) : (
                                 <div className="data-slice">
                                     <div className="data-name">
-                                        Date de naissance
+                                        Date of Birth
                                     </div>
                                     <div className="data-text">"-"</div>
                                 </div>
                             )}
 
                             <div className="data-slice">
-                                <div className="data-name">Adresse</div>
+                                <div className="data-name">Address</div>
                                 <div className="data-text">
                                     {patient.data?.address || "-"}
                                 </div>
@@ -270,7 +270,7 @@ export default function PatientProfile() {
 
                             {patient.data?.gender ? (
                                 <div className="data-slice">
-                                    <div className="data-name">Sexe</div>
+                                    <div className="data-name">Gender</div>
                                     <div className="data-text">
                                         <div
                                             style={{
@@ -292,7 +292,7 @@ export default function PatientProfile() {
                                                 (option: any) =>
                                                     option.value?.toLowerCase() ===
                                                     patient.data?.gender?.toLowerCase(),
-                                            )?.label || "opps!!"}
+                                            )?.label || "oops!!"}
                                             <SVGIcon
                                                 type={
                                                     patients.sexeOptions.find(
@@ -310,13 +310,13 @@ export default function PatientProfile() {
                                 </div>
                             ) : (
                                 <div className="data-slice">
-                                    <div className="data-name">Sexe</div>
+                                    <div className="data-name">Gender</div>
                                     <div className="data-text">"-"</div>
                                 </div>
                             )}
 
                             <div className="data-slice">
-                                <div className="data-name">Statut générale</div>
+                                <div className="data-name">General Condition</div>
                                 <div className="data-text">
                                     {patient.data?.generalState || "-"}
                                 </div>
@@ -345,7 +345,7 @@ export default function PatientProfile() {
                                         width={25}
                                         height={25}
                                     />
-                                    Modifier
+                                    Edit
                                 </div>
                                 <div
                                     className="delete-btn"
@@ -359,7 +359,7 @@ export default function PatientProfile() {
                                         width={25}
                                         height={25}
                                     />
-                                    Supprimer
+                                    Delete
                                 </div>
                             </div>
                         </div>
@@ -385,7 +385,7 @@ export default function PatientProfile() {
                             <div>État Géneral </div>
                             <div>
                                 {patient.data?.generalState}
-                               
+                                
                             </div>
                         </div>
                         <div className=''>
@@ -416,7 +416,7 @@ export default function PatientProfile() {
                     </div> */}
                         <div className="tabs main-box">
                             {[
-                                "Rendez-vous",
+                                "Appointments",
                                 // "Ordonnances",
                                 "Chart",
 

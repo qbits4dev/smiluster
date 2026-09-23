@@ -150,7 +150,7 @@ export default function Sidebar(props: SidebarProps) {
                         }}
                         onClick={navigateToHelpPage}
                     >
-                        {shape ? "Aide" : ""}
+                        {shape ? "Help" : ""}
                     </span>
                 </div>
                 <div className="center">

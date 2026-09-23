@@ -88,7 +88,7 @@ export default function AppointmentsList(props: any) {
 
     const tableOptions = [
         {
-            label: "Modifier",
+            label: "Edit",
             icon: (
                 <SVGIcon
                     type='edit'
@@ -100,7 +100,7 @@ export default function AppointmentsList(props: any) {
             onClick: onUpdateAppointment,
         },
         {
-            label: "Supprimer",
+            label: "Delete",
             icon: (
                 <SVGIcon
                     type='trash'
@@ -113,10 +113,10 @@ export default function AppointmentsList(props: any) {
         },
     ];
     const statusOptions = [
-        { value: "scheduled", label: "Planifié", color: "#2C86EF" },
-        { value: "pending", label: "En attente", color: "#F18E19" },
-        { value: "completed", label: "Terminé", color: "#1BD788" },
-        { value: "canceled", label: "Annulé", color: "#E20202" },
+        { value: "scheduled", label: "Scheduled", color: "#2C86EF" },
+        { value: "pending", label: "Pending", color: "#F18E19" },
+        { value: "completed", label: "Completed", color: "#1BD788" },
+        { value: "canceled", label: "Canceled", color: "#E20202" },
     ];
     const colorStyles = {
         control: (styles: any) => ({
@@ -167,7 +167,7 @@ export default function AppointmentsList(props: any) {
                     },
                 },
                 {
-                    value: "Durée",
+                    value: "Duration",
                     style: {
                         width: "15%",
                     },
@@ -179,7 +179,7 @@ export default function AppointmentsList(props: any) {
                     },
                 },
                 {
-                    value: "Statut",
+                    value: "Status",
                     style: {
                         width: "20%",
                     },
@@ -227,7 +227,7 @@ export default function AppointmentsList(props: any) {
                             ),
                         },
                         {
-                            value: <div>{row.appointmentDuration} mn</div>,
+                            value: <div>{row.appointmentDuration} min</div>,
                         },
                         {
                             value: (
@@ -386,8 +386,8 @@ export default function AppointmentsList(props: any) {
                 display={openDeleteCard.display}
                 onClose={() => setOpenDeleteCard({ display: false, id: "" })}
                 onDelete={handleOnDeleteAppointment}
-                name='ce rendez-vous'
-                additionalText='Attention !! En supprimant ce rendez-vous, tous les documents et opérations dentaires associés seront également supprimés.'
+                name='this appointment'
+                additionalText='Warning! By deleting this appointment, all associated documents and dental procedures will also be deleted.'
                 alert={true}
             />
             {view === "grid" ? (
@@ -582,7 +582,7 @@ export default function AppointmentsList(props: any) {
             ) : (
                 <form className='filters'>
                     <div>
-                        <label htmlFor=''>Rechercher</label>
+                        <label htmlFor=''>Search</label>
 
                         <div className='search'>
                             <SVGIcon
@@ -594,7 +594,7 @@ export default function AppointmentsList(props: any) {
                             <input
                                 name='search'
                                 type='text'
-                                placeholder='Rechercher...'
+                                placeholder='Search...'
                                 value={appointments.filterBy.search}
                                 onChange={(e) =>
                                     handleChangeAppointmentsFilters([
@@ -608,7 +608,7 @@ export default function AppointmentsList(props: any) {
                         </div>
                     </div>
                     <div className='date'>
-                        <label htmlFor='startDay'>Depuis le</label>
+                        <label htmlFor='startDay'>From</label>
                         <input
                             type='date'
                             name='startDay'
@@ -625,7 +625,7 @@ export default function AppointmentsList(props: any) {
                         />
                     </div>
                     <div className='date'>
-                        <label htmlFor='endDay'>Jusqu'à le</label>
+                        <label htmlFor='endDay'>To</label>
                         <input
                             type='date'
                             name='endDay'
@@ -647,7 +647,7 @@ export default function AppointmentsList(props: any) {
                             zIndex: "19",
                         }}
                     >
-                        <label htmlFor=''>Statut</label>
+                        <label htmlFor=''>Status</label>
                         <Select
                             options={statusOptions}
                             styles={colorStyles}
@@ -660,8 +660,8 @@ export default function AppointmentsList(props: any) {
                                 },
                             })}
                             isSearchable={false}
-                            placeholder='Selectionner...'
-                            noOptionsMessage={() => "Aucune option"}
+                            placeholder='Select...'
+                            noOptionsMessage={() => "No options"}
                             onChange={(item) =>
                                 handleChangeAppointmentsFilters([
                                     {
@@ -720,7 +720,7 @@ export default function AppointmentsList(props: any) {
                         </div>
 
                         <Button
-                            text='Ajouter Rendez-vous'
+                            text='Add Appointment'
                             iconName='add'
                             iconWidth={20}
                             iconHeight={20}
@@ -753,7 +753,7 @@ export default function AppointmentsList(props: any) {
                         tableDataStructure={tableDataStructure}
                         tableOptions={tableOptions}
                         loading={appointments.loading}
-                        noDataMessage='Aucun rendez-vous trouvé'
+                        noDataMessage='No appointments found'
                     />
                 )}
             </div>

@@ -117,8 +117,8 @@ export default function AppointmentPage() {
     };
 
     const [selectedTab, setSelectedTab] = React.useState(0);
-    const [frenchDateString, setFrenchDateString] = React.useState("");
-    const [frenchTimeString, setFrenchTimeString] = React.useState("");
+    const [formattedDateString, setFormattedDateString] = React.useState("");
+    const [timeString, setTimeString] = React.useState("");
 
     React.useEffect(() => {
         if (appointment !== null) {
@@ -126,8 +126,8 @@ export default function AppointmentPage() {
             const dateObject = new Date(appointmentDateTime);
 
             // Format date string (DD Mon YYYY)
-            setFrenchDateString(
-                dateObject.toLocaleDateString("fr-FR", {
+            setFormattedDateString(
+                dateObject.toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                     year: "numeric",
@@ -135,8 +135,8 @@ export default function AppointmentPage() {
             );
 
             // Format time string (HH:MM)
-            setFrenchTimeString(
-                dateObject.toLocaleTimeString("fr-FR", {
+            setTimeString(
+                dateObject.toLocaleTimeString("en-US", {
                     hour: "2-digit",
                     minute: "2-digit",
                 }),
@@ -163,11 +163,11 @@ export default function AppointmentPage() {
                 display={showDeleteCard}
                 onClose={() => setShowDeleteCard(false)}
                 onDelete={handleOnDeleteAppointment}
-                name="ce rendez-vous"
-                additionalText="Attention !! En supprimant ce rendez-vous, tous les documents et opérations dentaires associés seront également supprimés."
+                name="this appointment"
+                additionalText="Warning!! Deleting this appointment will also delete all associated documents and dental procedures."
                 alert={true}
             />
-            <div className="page-title">Rendez-vous</div>
+            <div className="page-title">Appointment</div>
             <div
                 className="content"
                 style={{
@@ -214,20 +214,20 @@ export default function AppointmentPage() {
                     </div>
                     <div className="data-slice">
                         <div className="data-name">Date</div>
-                        <div className="data-text">{frenchDateString}</div>
+                        <div className="data-text">{formattedDateString}</div>
                     </div>
                     <div className="data-slice">
-                        <div className="data-name">Temps</div>
-                        <div className="data-text">{frenchTimeString}</div>
+                        <div className="data-name">Time</div>
+                        <div className="data-text">{timeString}</div>
                     </div>
                     <div className="data-slice">
-                        <div className="data-name">Durée</div>
+                        <div className="data-name">Duration</div>
                         <div className="data-text">
                             {appointment?.appointmentDuration} minutes
                         </div>
                     </div>
                     <div className="data-slice">
-                        <div className="data-name">Statut</div>
+                        <div className="data-name">Status</div>
                         <div
                             className="data-text"
                             style={{
@@ -267,7 +267,7 @@ export default function AppointmentPage() {
                             width={25}
                             height={25}
                         />
-                        Modifier
+                        Edit
                     </div>{" "}
                     <div
                         className="delete-btn"
@@ -281,7 +281,7 @@ export default function AppointmentPage() {
                             width={25}
                             height={25}
                         />
-                        Supprimer
+                        Delete
                     </div>
                 </div>
                 <div
@@ -295,9 +295,9 @@ export default function AppointmentPage() {
                         {[
                             "Chart",
                             "Documents",
-                            "Diagnostique",
-                            "Ordonnance",
-                            "Facturation",
+                            "Diagnosis",
+                            "Prescription",
+                            "Billing",
                         ].map((item, index) => (
                             <a
                                 key={index}
@@ -310,7 +310,7 @@ export default function AppointmentPage() {
                                 }}
                             >
                                 {item}
-                                {item === "Facturation" && (
+                                {item === "Billing" && (
                                     <div
                                         style={{
                                             position: "absolute",

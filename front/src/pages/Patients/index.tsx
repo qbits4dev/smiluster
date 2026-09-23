@@ -284,7 +284,7 @@ export default function Patient() {
                 <div className='header-container'>
                     <div className='filters'>
                         <div>
-                            <label htmlFor='search'>Rechercher </label>
+                            <label htmlFor='search'>Search</label>
                             <div className='search'>
                                 <SVGIcon
                                     type={"search"}
@@ -295,7 +295,7 @@ export default function Patient() {
                                 <input
 
                                     type='text'
-                                    placeholder='Rechercher'
+                                    placeholder='Search'
                                     name='search'
                                     onChange={handleOnChange}
                                     value={patients.list.filterBy.search}
@@ -304,7 +304,7 @@ export default function Patient() {
                         </div>
                         <div className='date'>
                             <label htmlFor='dateOfBirth'>
-                                Date de naissance
+                                Date of Birth
                             </label>
                             <input
                                 type='date'
@@ -320,12 +320,12 @@ export default function Patient() {
                                 zIndex: "19",
                             }}
                         >
-                            <label htmlFor=''>Sexe</label>
+                            <label htmlFor=''>Gender</label>
                             <Select
                                 options={[
-                                    { value: undefined, label: "Tous" },
-                                    { value: "male", label: "Homme" },
-                                    { value: "female", label: "Femme" },
+                                    { value: undefined, label: "All" },
+                                    { value: "male", label: "Male" },
+                                    { value: "female", label: "Female" },
                                 ]}
                                 theme={(theme) => ({
                                     ...theme,
@@ -336,32 +336,14 @@ export default function Patient() {
                                 })}
                                 styles={colorStyles}
                                 isSearchable={false}
-                                placeholder='Selectionner...'
+                                placeholder='Select...'
                                 value={patients.list.filterBy.gender}
                                 onChange={handleChangeGender}
                             />
                         </div>
                     </div>
-                    {/* <div className='search'>
-                        <label htmlFor='search'>
-                            <SVGIcon
-                                name={"search"}
-                                color='var(--color-1)'
-                                width={25}
-                                height={25}
-                            />
-                        </label>
-                        <input
-                            name='search'
-                            id='search'
-                            type='text'
-                            placeholder='Rechercher...'
-                            value={patients.filterBy.search}
-                            onChange={handleOnChange}
-                        />
-                    </div> */}
                     <Button
-                        text='Ajouter Patient'
+                        text='Add Patient'
                         iconName='add'
                         iconWidth={20}
                         iconHeight={20}
@@ -378,10 +360,6 @@ export default function Patient() {
                         onClose={handleCloseCard}
                         onAdd={handleNewPatientCreation}
                     />
-                    {/* <div className='head'>
-                       
-                        
-                    </div> */}
                 </div>
                 <div className='list'>
                     <Table
@@ -389,13 +367,13 @@ export default function Patient() {
                             header: {
                                 dataHead: [
                                     { value: "ID" },
-                                    { value: "Nom et prénom" },
-                                    { value: "Date de naissance" },
-                                    { value: "Sexe" },
-                                    { value: "Tél." },
-                                    { value: "E-mail" },
-                                    { value: "Addresse" },
-                                    { value: "État génerale" },
+                                    { value: "Full Name" },
+                                    { value: "Date of Birth" },
+                                    { value: "Gender" },
+                                    { value: "Phone" },
+                                    { value: "Email" },
+                                    { value: "Address" },
+                                    { value: "General Condition" },
                                     { value: "Profession" },
                                 ],
                             },
@@ -403,27 +381,27 @@ export default function Patient() {
                         }}
                         tableOptions={[
                             {
-                                label: "Modifier",
+                                label: "Edit",
                                 icon: <EditSVG width={20} height={20} />,
                                 link: null,
                                 onClick: handlePatientEdit,
                             },
                             {
-                                label: "Supprimer",
+                                label: "Delete",
                                 icon: <DeleteSVG width={20} height={20} />,
                                 link: null,
                                 onClick: handlePatientDelete,
                             },
                         ]}
-                        noDataMessage='Aucun patient trouvé'
+                        noDataMessage='No patients found'
                         loading={patients.list.loading}
                     />
                     <DeleteCard
                         display={showDeleteCard}
                         onClose={() => setShowDeleteCard(false)}
                         onDelete={handleOnDeletePatient}
-                        name='patient'
-                        additionalText='Attention !! En supprimant ce patient, tous les rendez-vous, documents et opérations dentaires associés seront également supprimés.'
+                        name='this patient'
+                        additionalText='Warning! By deleting this patient, all associated appointments, documents, and dental procedures will also be deleted.'
                         alert={true}
                     />
                     <PatientCardForm

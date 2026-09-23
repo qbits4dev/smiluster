@@ -30,7 +30,7 @@ export default function AddProductCard(props: any) {
     };
     const buttons = [
         {
-            text: "Annuler",
+            text: "Cancel",
             style: {
                 backgroundColor: "white",
                 color: "var(--gray-1)",
@@ -40,7 +40,7 @@ export default function AddProductCard(props: any) {
             onClick: handleClose,
         },
         {
-            text: "Ajouter",
+            text: "Add",
             style: {
                 backgroundColor: "var(--color-1)",
                 color: "white",
@@ -55,7 +55,7 @@ export default function AddProductCard(props: any) {
     return (
         <Modal modalEnabled={display} onClose={handleClose}>
             <PopupCard
-                title={"Ajouter un produit"}
+                title={"Add Product"}
                 activatedFooter={true}
                 onClose={handleClose}
                 display={display}
@@ -78,7 +78,7 @@ export default function AddProductCard(props: any) {
                                 display: "flex",
                             }}
                         >
-                            Nom du produit
+                            Product Name
                             <Star />
                             <span
                                 style={{

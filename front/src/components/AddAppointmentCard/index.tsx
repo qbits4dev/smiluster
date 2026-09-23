@@ -185,7 +185,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
 
     const popupButtons = [
         {
-            text: "Annuler",
+            text: "Cancel",
             style: {
                 backgroundColor: "white",
                 color: "var(--gray-1)",
@@ -195,7 +195,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
             onClick: handleClose,
         },
         {
-            text: toEdit ? "Modifiter" : "Ajouter",
+            text: toEdit ? "Edit" : "Add",
             style: {
                 backgroundColor: "var(--color-1)",
                 color: "white",
@@ -260,7 +260,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
             <div className="appointment-infos">
                 <div>
                     <label htmlFor="">
-                        Date de rendez-vous
+                        Appointment Date
                         <Star />
                     </label>
                     <input
@@ -276,7 +276,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                     />
                 </div>
                 <div className="status">
-                    <label htmlFor="">Statut</label>
+                    <label htmlFor="">Status</label>
                     <Select
                         options={appointments.statusOptions}
                         styles={colorStyles}
@@ -288,8 +288,8 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                             },
                         })}
                         isSearchable={false}
-                        placeholder="Selectionner..."
-                        noOptionsMessage={() => "Aucune option"}
+                        placeholder="Select..."
+                        noOptionsMessage={() => "No options"}
                         value={selectedStatusOption}
                         onChange={(item) => {
                             if (item?.value) {
@@ -320,7 +320,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                 </div>
                 <div>
                     <label htmlFor="">
-                        Temps de rendez-vous
+                        Appointment Time
                         <Star />
                     </label>
                     <input
@@ -337,7 +337,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                 </div>
                 <div>
                     <label htmlFor="">
-                        Durée
+                        Duration
                         <Star />
                         <span
                             style={{
@@ -345,7 +345,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                                 fontSize: "small",
                             }}
                         >
-                            (en minutes)
+                            (in minutes)
                         </span>
                     </label>
                     <input
@@ -366,7 +366,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
     return (
         <Modal modalEnabled={display} onClose={handleClose}>
             <PopupCard
-                title={`${toEdit ? "Modifier" : "Ajouter"} Rendez-vous`}
+                title={`${toEdit ? "Edit" : "Add"} Appointment`}
                 activatedFooter={true}
                 onClose={handleClose}
                 display={display}
@@ -378,7 +378,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                             className={`tab ${oldPatient ? "active-form" : ""}`}
                             onClick={() => setOldPatient(true)}
                         >
-                            Ancien patient
+                            Existing Patient
                         </div>
                         <div
                             className={`tab ${
@@ -386,7 +386,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                             }`}
                             onClick={() => setOldPatient(false)}
                         >
-                            Nouveau patient
+                            New Patient
                         </div>
                     </div>
                 )}
@@ -396,15 +396,14 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                             {!existing && (
                                 <div className="search">
                                     <label htmlFor="search-bar">
-                                        Merci de procéder à la recherche du
-                                        patient afin de prendre un rendez-vous.
+                                        Please search for a patient to schedule an appointment.
                                         <Star />
                                     </label>
                                     <Select
                                         options={patientsOptions}
                                         // defaultValue={selectedOption}
                                         placeholder={
-                                            "Selectionner un ancien patient..."
+                                            "Select an existing patient..."
                                         }
                                         onChange={(item: any) => {
                                             if (item && item.value) {
@@ -437,13 +436,12 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                     ) : (
                         <form>
                             <p>
-                                Merci de procéder à la création d'un nouveau
-                                patient afin de prendre un rendez-vous.
+                                Please enter new patient details to schedule an appointment.
                             </p>
                             <div className="appointment-infos">
                                 <div>
                                     <label htmlFor="">
-                                        Nom
+                                        Last Name
                                         <Star />
                                     </label>
                                     <input
@@ -460,7 +458,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                                 </div>
                                 <div>
                                     <label htmlFor="">
-                                        Prénon
+                                        First Name
                                         <Star />
                                     </label>
                                     <input
@@ -477,7 +475,7 @@ export default function AddAppointmentCard(props: AddAppointmentCardProps) {
                                 </div>
                                 <div>
                                     <label htmlFor="">
-                                        Numéro de téléphone
+                                        Phone Number
                                         <Star />
                                     </label>
                                     <input

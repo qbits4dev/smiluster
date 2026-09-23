@@ -32,8 +32,8 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                 value: initialPatient.gender,
                 label:
                     initialPatient.gender?.toLowerCase() === "male"
-                        ? "Homme"
-                        : "Femme",
+                        ? "Male"
+                        : "Female",
             });
             setselectedDate(
                 DateTime.fromISO(initialPatient.dateOfBirth).toFormat(
@@ -85,7 +85,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
 
     const submitAction = initialPatient ? onUpdate : onAdd;
 
-    const submitButtonText = initialPatient ? "Modifier" : "Ajouter";
+    const submitButtonText = initialPatient ? "Edit" : "Add";
 
     const submitFunction = () => {
         submitAction?.(patient);
@@ -105,7 +105,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
 
     const buttons = [
         {
-            text: "Annuler",
+            text: "Cancel",
             style: {
                 backgroundColor: "white",
                 color: "var(--gray-1)",
@@ -131,8 +131,8 @@ export default function PatientCardForm(props: PatientCardFormProps) {
             <PopupCard
                 title={
                     initialPatient
-                        ? "Modifier le patient"
-                        : "Ajouter un patient"
+                        ? "Edit Patient"
+                        : "Add Patient"
                 }
                 activatedFooter={true}
                 onClose={onClose}
@@ -144,7 +144,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                         <div className='add-patient-infos'>
                             <div className='info-item'>
                                 <label htmlFor='firstName'>
-                                    Nom
+                                    Last Name
                                     <Star />
                                 </label>
                                 <input
@@ -156,7 +156,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                             </div>
                             <div className='info-item'>
                                 <label htmlFor=''>
-                                    Prénom
+                                    First Name
                                     <Star />
                                 </label>
                                 <input
@@ -168,7 +168,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                             </div>
                             <div className='info-item'>
                                 <label htmlFor=''>
-                                    Numéro de téléphone
+                                    Phone Number
                                     <Star />
                                 </label>
                                 <input
@@ -179,7 +179,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                                 />
                             </div>
                             <div className='info-item'>
-                                <label htmlFor=''>Date de naissance<Star/></label>
+                                <label htmlFor=''>Date of Birth<Star/></label>
                                 <input
                                     name='dateOfBirth'
                                     type='date'
@@ -197,7 +197,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                                 />
                             </div>
                             <div className='info-item'>
-                                <label htmlFor=''>Addresse</label>
+                                <label htmlFor=''>Address</label>
                                 <input
                                     name='address'
                                     type='text'
@@ -206,11 +206,11 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                                 />
                             </div>
                             <div className='info-item'>
-                                <label htmlFor=''>Sexe</label>
+                                <label htmlFor=''>Gender</label>
                                 <Select
                                     options={[
-                                        { value: "Male", label: "Homme" },
-                                        { value: "female", label: "Femme" },
+                                        { value: "Male", label: "Male" },
+                                        { value: "female", label: "Female" },
                                     ]}
                                     theme={(theme) => ({
                                         ...theme,
@@ -221,7 +221,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                                     })}
                                     styles={colorStyles}
                                     isSearchable={false}
-                                    placeholder='Selectionner...'
+                                    placeholder='Select...'
                                     value={selectedGender}
                                     onChange={handleSelectGender}
                                 />
@@ -237,7 +237,7 @@ export default function PatientCardForm(props: PatientCardFormProps) {
                             </div>
 
                             <div className='info-item'>
-                                <label htmlFor=''>État générale</label>
+                                <label htmlFor=''>General Condition</label>
                                 <textarea
                                     name='generalState'
                                     value={patient.generalState}

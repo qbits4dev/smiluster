@@ -76,7 +76,7 @@ export const getCurrentWeekDays = (step: number) => {
     const dateFromStr = dt.startOf("week");
     let startDate = dateFromStr.plus({ weeks: step });
     const days = Array.from({ length: 7 }, (_, index) => {
-        let today = startDate.plus({ days: index }).setLocale("fr");
+        let today = startDate.plus({ days: index }).setLocale("en");
         return {
             weekDay: today.toLocaleString({ weekday: "long" }),
             day: today.day,

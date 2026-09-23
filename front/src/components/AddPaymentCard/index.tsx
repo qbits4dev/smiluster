@@ -29,7 +29,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
     };
     const popupButtons: any = [
         {
-            text: "Annuler",
+            text: "Cancel",
             style: {
                 backgroundColor: "white",
                 color: "var(--gray-1)",
@@ -39,7 +39,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
             onClick: handleClose,
         },
         {
-            text: "Payer",
+            text: "Pay",
             style: {
                 backgroundColor: "var(--color-1)",
                 color: "white",
@@ -68,7 +68,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
                                     fontWeight: 700,
                                 }}
                             >
-                                Réf: {invoiceInfo.ref}
+                                Ref: {invoiceInfo.ref}
                             </div>
                             <div
                                 className='fact-patient'
@@ -87,7 +87,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
                                         fontWeight: 500,
                                     }}
                                 >
-                                    Montant total :
+                                    Total amount:
                                 </div>
                                 <div>{invoiceInfo.totalAmount}</div>
                             </div>
@@ -98,7 +98,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
                                         fontWeight: 500,
                                     }}
                                 >
-                                    Montant payé :
+                                    Paid amount:
                                 </div>
                                 <div>{invoiceInfo.payedAmount}</div>
                             </div>
@@ -109,7 +109,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
                                         fontWeight: 500,
                                     }}
                                 >
-                                    Montant Restant :
+                                    Remaining amount:
                                 </div>
                                 <div>{invoiceInfo.restAmount}</div>
                             </div>
@@ -122,7 +122,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
                                     fontWeight: 700,
                                 }}
                             >
-                                Montant en cours
+                                Payment amount
                             </div>
                             <div>
                                 <input
@@ -134,7 +134,7 @@ export default function AddPaymentCard(props: AddPaymentCardProps) {
                                     }}
                                     name='cost'
                                     type='text'
-                                    placeholder='Somme Payée...'
+                                    placeholder='Amount paid...'
                                     onChange={handleChange}
                                 />
                             </div>
@@ -169,5 +169,5 @@ interface AddPaymentCardProps {
 
 AddPaymentCard.defaultProps = {
     display: true,
-    title: "Ajouter un montant payé",
+    title: "Add payment amount",
 };

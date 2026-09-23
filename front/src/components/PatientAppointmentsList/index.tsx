@@ -108,20 +108,8 @@ export default function PatientAppointmentsList(props: any) {
     };
 
     const tableOptions = [
-        // {
-        //     label: "Modifier",
-        //     icon: (
-        //         <SVGIcon
-        //             type='edit'
-        //             color='var(--color-1)'
-        //             width={25}
-        //             height={25}
-        //         />
-        //     ),
-        //     onClick: onUpdateAppointment,
-        // },
         {
-            label: "Supprimer",
+            label: "Delete",
             icon: (
                 <SVGIcon
                     type="trash"
@@ -133,19 +121,11 @@ export default function PatientAppointmentsList(props: any) {
             onClick: onDeleteAppointment,
         },
     ];
-    // const itemStyle = {
-    //     padding: "4px",
-    // };
-    // const iconStyle = {};
-    // const labelStyle = {
-    //     color: "var(--color-1)",
-    // };
     const statusOptions = [
-        // { value: undefined, label: "Tout les status", color: "var(--color-1)" },
-        { value: "scheduled", label: "Planifié", color: "#2C86EF" },
-        { value: "pending", label: "En attente", color: "#F18E19" },
-        { value: "completed", label: "Terminé", color: "#1BD788" },
-        { value: "canceled", label: "Annulé", color: "#E20202" },
+        { value: "scheduled", label: "Scheduled", color: "#2C86EF" },
+        { value: "pending", label: "Pending", color: "#F18E19" },
+        { value: "completed", label: "Completed", color: "#1BD788" },
+        { value: "canceled", label: "Canceled", color: "#E20202" },
     ];
     const colorStyles = {
         control: (styles: any) => ({
@@ -190,11 +170,10 @@ export default function PatientAppointmentsList(props: any) {
         header: {
             dataHead: [
                 { value: "Date" },
-                // { value: "Patient" },
-                { value: "Statut" },
+                { value: "Status" },
                 { value: "Rx" },
-                { value: "Doit" },
-                { value: "Reçu" },
+                { value: "Total" },
+                { value: "Paid" },
                 { value: "Note" },
             ],
             style: {},
@@ -232,37 +211,6 @@ export default function PatientAppointmentsList(props: any) {
                                 </div>
                             ),
                         },
-                        // {
-                        //     value: (
-                        //         <div className='patient-in-table'>
-                        //             <div className='image'>
-                        //                 <ProfilePicture
-                        //                     src={
-                        //                         "https://www.nicepng.com/png/detail/353-3533165_young-doctor-transpare-young-doctor.png"
-                        //                     }
-                        //                     alt={
-                        //                         row.patient.firstName?.slice(
-                        //                             0,
-                        //                             1
-                        //                         ) +
-                        //                         row.patient.lastName?.slice(
-                        //                             0,
-                        //                             1
-                        //                         )
-                        //                     }
-                        //                     color='white'
-                        //                     bgColor='var(--color-1)'
-                        //                     size='90%'
-                        //                 />
-                        //             </div>
-                        //             <div>
-                        //                 {row.patient.firstName +
-                        //                     " " +
-                        //                     row.patient.lastName}
-                        //             </div>
-                        //         </div>
-                        //     ),
-                        // },
                         {
                             value: (
                                 <div
@@ -337,7 +285,7 @@ export default function PatientAppointmentsList(props: any) {
                         {
                             value: row.note || (
                                 <div style={{ opacity: "0.25" }}>
-                                    pas de note
+                                    no note
                                 </div>
                             ),
                         },
@@ -354,23 +302,15 @@ export default function PatientAppointmentsList(props: any) {
 
     return (
         <div className="appointment-list">
-            {/* <div>
-                <ReactQuill
-                    value={value}
-                    // onChange={handleChange}
-                    modules={modules}
-                    formats={formats}
-                />
-            </div> */}
             <DeleteCard
                 display={openDeleteCard.display}
                 onClose={() => setOpenDeleteCard({ display: false, id: "" })}
                 onDelete={handleOnDeleteAppointment}
-                name="ce rendez-vous"
+                name="this appointment"
             />
             <form className="filters">
                 <div>
-                    <label htmlFor="">Rechercher</label>
+                    <label htmlFor="">Search</label>
 
                     <div className="search">
                         <SVGIcon
@@ -382,7 +322,7 @@ export default function PatientAppointmentsList(props: any) {
                         <input
                             name="search"
                             type="text"
-                            placeholder="Rechercher..."
+                            placeholder="Search..."
                             value={patientAppointments.filterBy.search}
                             onChange={(e) =>
                                 handleChangeAppointmentsFilters([
@@ -396,7 +336,7 @@ export default function PatientAppointmentsList(props: any) {
                     </div>
                 </div>
                 <div className="date">
-                    <label htmlFor="startDay">Depuis le</label>
+                    <label htmlFor="startDay">From</label>
                     <input
                         type="date"
                         name="startDay"
@@ -413,7 +353,7 @@ export default function PatientAppointmentsList(props: any) {
                     />
                 </div>
                 <div className="date">
-                    <label htmlFor="endDay">Jusqu'à le</label>
+                    <label htmlFor="endDay">To</label>
                     <input
                         type="date"
                         name="endDay"
@@ -435,7 +375,7 @@ export default function PatientAppointmentsList(props: any) {
                         zIndex: "19",
                     }}
                 >
-                    <label htmlFor="">Statut</label>
+                    <label htmlFor="">Status</label>
                     <Select
                         options={statusOptions}
                         styles={colorStyles}
@@ -448,8 +388,8 @@ export default function PatientAppointmentsList(props: any) {
                             },
                         })}
                         isSearchable={false}
-                        placeholder="Selectionner..."
-                        noOptionsMessage={() => "Aucune option"}
+                        placeholder="Select..."
+                        noOptionsMessage={() => "No options"}
                         onChange={(item) =>
                             handleChangeAppointmentsFilters([
                                 {
@@ -484,7 +424,7 @@ export default function PatientAppointmentsList(props: any) {
                         pagination={false}
                         tableDataStructure={tableDataStructure}
                         tableOptions={tableOptions}
-                        noDataMessage="Aucun rendez-vous trouvé"
+                        noDataMessage="No appointments found"
                     />
                 )}
             </div>
