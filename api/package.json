@@ -180,7 +180,6 @@
     "sequelize": "^3.30.0",
     "sequelize-pool": "^7.1.0",
     "sequelize-typescript": "^0.6.11",
-    "sequelize-typescript-generator": "^2.7.2",
     "serve-static": "^1.15.0",
     "setprototypeof": "^1.2.0",
     "shebang-command": "^2.0.0",
